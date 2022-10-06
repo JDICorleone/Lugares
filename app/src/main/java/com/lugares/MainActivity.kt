@@ -30,22 +30,23 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         //Se define el metodo para el login
-        binding.btLogin.setOnClickListener{
+        binding.btLogin.setOnClickListener {
             haceLogin();
         }
     }
 
-        //Se define el metodo para el Register
-        binding.btRegister.setOnClickListener{
+    //Se define el metodo para el Register
+    binding.btRegister.setOnClickListener
+    {
         haceRegister();
-        }
+    }
+
 }
 
 
-
     private fun haceRegister() {
-        var email = binding.etMail.text.toString()
-        var clave = binding.etClave.text.toString()
+        val email = binding.etMail.text.toString()
+        val clave = binding.etClave.text.toString()
 
             //Se hace el registro
 
@@ -84,8 +85,8 @@ public override fun onStart() {
 }
 
 private fun haceLogin() {
-        var email = binding.etMail.text.toString()
-        var clave = binding.etClave.text.toString()
+        val email = binding.etMail.text.toString()
+        val clave = binding.etClave.text.toString()
 
 
 
