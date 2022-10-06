@@ -33,76 +33,70 @@ class MainActivity : AppCompatActivity() {
         binding.btLogin.setOnClickListener {
             haceLogin();
         }
-    }
 
-    //Se define el metodo para el Register
-    binding.btRegister.setOnClickListener
-    {
-        haceRegister();
+        //Se define el metodo para el Register
+        binding.btRegister.setOnClickListener {
+            haceRegister();
+        }
     }
-
-}
 
 
     private fun haceRegister() {
-        val email = binding.etMail.text.toString()
+        val email = binding.etEmail.text.toString()
         val clave = binding.etClave.text.toString()
 
-            //Se hace el registro
+        //Se hace el registro
 
-            auth.createUserWithEmailAndPassword(email,clave)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Log.d("Creando Usuario", "Registrado")
-                        val user = auth.currentUser
-                        if (user != null) {
-                            actualiza(user)
-                        }
-                    } else {
-                        Log.d("Creando Usuario", "Fallo")
-                        Toast.makeText(baseContext, "Fallo", Toast.LENGTH_LONG).show()
-                        actualiza(null)
+        auth.createUserWithEmailAndPassword(email, clave)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d("Creando Usuario", "Registrado")
+                    val user = auth.currentUser
+                    if (user != null) {
+                        actualiza(user)
                     }
+                } else {
+                    Log.d("Creando Usuario", "Fallo")
+                    Toast.makeText(baseContext, "Fallo", Toast.LENGTH_LONG).show()
+                    actualiza(null)
                 }
-        }
-
-private fun actualiza(user: FirebaseUser?) {
-    if (user != null){
-        val intent = Intent(this, Principal::class.java)
-        startActivity(intent)
+            }
     }
-}
 
-//Esto hara que una vez autenticado... no pida mas o menos que se cierre la sesion
-public override fun onStart() {
-    super.onStart()
-    val usuario= auth.currentUser
-    actualiza(usuario)
-}
+    private fun actualiza(user: FirebaseUser?) {
+        if (user != null) {
+            val intent = Intent(this, Principal::class.java)
+            startActivity(intent)
+        }
+    }
 
-}
+    //Esto hara que una vez autenticado... no pida mas o menos que se cierre la sesion
+    public override fun onStart() {
+        super.onStart()
+        val usuario = auth.currentUser
+        actualiza(usuario)
+    }
 
-}
 
-private fun haceLogin() {
-        val email = binding.etMail.text.toString()
+    private fun haceLogin() {
+        val email = binding.etEmail.text.toString()
         val clave = binding.etClave.text.toString()
 
 
-
-    auth.signInWithEmailAndPassword(email,clave)
-        .addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-                Log.d("Autenticando", "Autenticado")
-                val user = auth.currentUser
-                if (user != null) {
-                    actualiza(user)
+        auth.signInWithEmailAndPassword(email, clave)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d("Autenticando", "Autenticado")
+                    val user = auth.currentUser
+                    if (user != null) {
+                        actualiza(user)
+                    }
+                } else {
+                    Log.d("Autenticando", "Fallo")
+                    Toast.makeText(baseContext, "Fallo", Toast.LENGTH_LONG).show()
+                    actualiza(null)
                 }
-            }else{
-                Log.d("Autenticando", "Fallo")
-                Toast.makeText(baseContext, "Fallo", Toast.LENGHT_LONG).show()
-                actualiza(null)
             }
-        }
-}
+    }
 
+}
