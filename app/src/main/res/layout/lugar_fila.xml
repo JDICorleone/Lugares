@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vistaFila"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    app:cardElevation="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_nombre"
+            android:layout_width="341dp"
+            android:layout_height="23dp"
+            android:text="'@string/msg_nombre'"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="37dp"
+            tools:layout_editor_absoluteY="6dp" />
+
+        <ImageView
+            android:id="@+id/imagen"
+            android:layout_width="102dp"
+            android:layout_height="106dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="32dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_correo"
+            android:layout_width="278dp"
+            android:layout_height="18dp"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="52dp" />
+
+        <TextView
+            android:id="@+id/tv_telefono"
+            android:layout_width="269dp"
+            android:layout_height="23dp"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="119dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

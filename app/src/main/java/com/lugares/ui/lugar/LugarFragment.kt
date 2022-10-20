@@ -25,16 +25,14 @@ class LugarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         lugarViewModel =
-            ViewModelProvider(this).get(LugarViewModel::class.java)
+            ViewModelProvider(this)[LugarViewModel::class.java]
 
         _binding = FragmentLugarBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        lugarViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.fbAgregar.setOnClickListener(){
+            findNavController().navigate(R.id.action_nav_lugar_to_addLugarFragment)
         }
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
